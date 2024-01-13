@@ -45,7 +45,7 @@ nav {
   flex-direction: column;
 
   a {
-    padding: 2rem;
+    padding: 1.5rem;
     background: var(--nav-bg);
     color: var(--nav-fg);
     text-decoration: none;
