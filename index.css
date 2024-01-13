@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+/* https://www.linkedin.com/posts/lucaslimasz_mobile-frontend-css-activity-7145756695661625345-lyl9?utm_source=share&utm_medium=member_android */
 
 :root {
   --bg: #010101;
@@ -8,19 +8,36 @@
   --nav-bg: #171717;
   --nav-bg-active: #393939;
 
-  --font: 1rem/1 Roboto, sans-serif;
+  --font: 1rem sans-serif;
   --border-radius: 2rem;
 }
 
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  height: 100svh;
   font: var(--font);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+#app {
   max-width: 720px;
   margin: 1rem auto;
-  background: var(--bg);
-
   @media(width < 720px) {
     margin: 1rem;
   }
+}
+
+canvas {
+  display: block;
+  margin: auto;
 }
 
 nav {
@@ -33,7 +50,6 @@ nav {
     color: var(--nav-fg);
     text-decoration: none;
     transition: all .2s;
-    /* border-radius: var(--border-radius); */
 
     &:first-of-type {
       border-radius: var(--border-radius) var(--border-radius) 0 0;
