@@ -81,4 +81,10 @@ nav {
       background-color: var(--nav-bg-active);
     }
   }
+
+  &:hover {
+    a::after {
+      display: none;
+    }
+  }
 }
