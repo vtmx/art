@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make Bubbles</title>
+  <link rel="stylesheet" href="../index.css">
+  <script type="module" defer>
+
+    import * as art from '../index.js';
+
+    // Create canvas
+    const canvas = document.createElement('canvas');
+    art.createCanvas(canvas);
+    art.updateSizeCanvas(canvas);
+    window.addEventListener('resize', () => { art.updateSizeCanvas(canvas); });
+
+    // Style
+    const ctx = canvas.getContext('2d');
+    // ctx.fillStyle = 'rgba(0 0 0 /.1)'
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 8;
+
+    // Draw
+    function createCircle(w, h, d) {
+      ctx.beginPath();
+      ctx.arc(w, h, d, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+    }
+
+    const maxBubble = 30;
+    const maxBubbleDimension = 100;
+    const canvasWidth = document.body.clientWidth;
+    const canvasHeight = document.body.clientHeight;
+
+    // Create circle in center
+    createCircle(canvasWidth / 2 - 25, canvasHeight / 2 - 25, 50);
+
+    // Add bubble in cursor
+    document.addEventListener('click', (event) => {
+      const maxBubble = 30;
+      const minBubbleDimension = 50;
+      const maxBubbleDimension = 100;
+      const randomWidth = Math.random() * document.body.clientWidth;
+      const randomHeight = Math.random() * document.body.clientHeight;
+      const clientX = event.clientX;
+      const clientY = event.clientY;
+
+      let randomDimension = Math.round(Math.random() * maxBubbleDimension);
+      do {
+        randomDimension = Math.round(Math.random() * maxBubbleDimension);
+      } while (randomDimension < minBubbleDimension)
+
+      createCircle(clientX, clientY, randomDimension);
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>

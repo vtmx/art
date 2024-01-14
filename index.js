@@ -7,8 +7,4 @@ function updateSizeCanvas(canvas) {
   canvas.height = document.body.clientHeight;
 }
 
-function circle(x, y, d) {
-
-}
-
-export { createCanvas, updateSizeCanvas, circle };
+export { createCanvas, updateSizeCanvas };

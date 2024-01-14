@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make Bubbles</title>
+  <link rel="stylesheet" href="../index.css">
+  <script type="module" defer>
+
+    import * as art from '../index.js';
+
+    // Create canvas
+    const canvas = document.createElement('canvas');
+    art.createCanvas(canvas);
+    art.updateSizeCanvas(canvas);
+    window.addEventListener('resize', () => { art.updateSizeCanvas(canvas); });
+
+    // Style
+    const ctx = canvas.getContext('2d');
+    // ctx.fillStyle = 'rgba(0 0 0 /.1)'
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 8;
+
+    // Draw
+    function createCircle(w, h, d) {
+      ctx.beginPath();
+      ctx.arc(w, h, d, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+    }
+
+    // Bubble vars
+    function createRandomBubble() {
+      const maxBubble = 30;
+      const minBubbleDimension = 30;
+      const maxBubbleDimension = 100;
+      const randomWidth = Math.random() * document.body.clientWidth;
+      const randomHeight = Math.random() * document.body.clientHeight;
+
+      let randomDimension = Math.round(Math.random() * maxBubbleDimension);
+      do {
+        randomDimension = Math.round(Math.random() * maxBubbleDimension);
+      } while (randomDimension < minBubbleDimension)
+
+      createCircle(randomWidth, randomHeight, randomDimension);
+    }
+
+    // Create circle in center
+    const canvasWidth = document.body.clientWidth;
+    const canvasHeight = document.body.clientHeight;
+    createCircle(canvasWidth / 2 - 25, canvasHeight / 2 - 25, 50);
+
+    let second = 0.5;
+    let interval = setInterval(createRandomBubble, 1000 * second);
+    
+    document.addEventListener('click', () => {
+      interval = setInterval(createRandomBubble, 1000 * second);
+      second-=0.1;
+    });
+
+  </script>
+</head>
+<body>
+</body>
+</html>
