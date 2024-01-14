@@ -50,6 +50,11 @@ h2 {
 nav {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
   a {
     position: relative;
@@ -91,6 +96,91 @@ nav {
   &:hover {
     a::after {
       display: none;
+    }
+  }
+}
+
+#controller {
+  display: grid;
+  grid-template-areas: "up . ."
+  'down left right';
+  gap: 1rem;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: calc(100vw - 2rem);
+
+  .up { grid-area: up; }
+  .down { grid-area: down; }
+  .left { grid-area: left; }
+  .right { grid-area: right; }
+
+  button {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    flex-grow: 1;
+    height: 96px;
+    background: transparent;
+    border: 4px solid var(--fg);
+    border-radius: var(--border-radius);
+    color: var(--fg);
+    transition: all .2s;
+
+    &:hover, &:active {
+      cursor: pointer;
+      background: #111;
+    }
+    
+    .icon {
+      position: relative;
+      display: block;
+      transform: scale(2);
+      width: 22px;
+      height: 22px;
+      border: 2px solid transparent;
+      border-radius: 100px;
+    }
+
+    .icon::after {
+      content: '';
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+    }
+
+    .up::after {
+      border-top: 2px solid;
+      border-right: 2px solid;
+      transform: rotate(-45deg);
+      left: 4px;
+      bottom: 2px
+    }
+
+    .down::after {
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+      transform: rotate(45deg);
+      left: 4px;
+      top: 2px
+    } 
+
+    .left::after {
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+      transform: rotate(45deg);
+      left: 6px;
+      top: 4px
+    }
+
+    .right::after {
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+      transform: rotate(-45deg);
+      right: 6px;
+      top: 4px
     }
   }
 }
