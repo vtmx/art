@@ -110,10 +110,25 @@ nav {
   left: 1rem;
   width: calc(100vw - 2rem);
 
-  .up { grid-area: up; }
-  .down { grid-area: down; }
-  .left { grid-area: left; }
-  .right { grid-area: right; }
+  .up {
+    grid-area: up;
+    border-top-left-radius: 0;
+  }
+
+  .down {
+    grid-area: down;
+    border-bottom-left-radius: 0;
+  }
+
+  .left {
+    grid-area: left;
+    border-bottom-right-radius: 0;
+  }
+
+  .right {
+    grid-area: right;
+    border-bottom-left-radius: 0;
+  }
 
   button {
     display: flex;
