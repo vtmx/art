@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball CSS</title>
+  <link rel="stylesheet" href="../index.css">
+  <script defer>
+    window.addEventListener('load', () => {
+      const ball = document.createElement('div');
+      ball.classList.add('ball');
+
+      const style = {
+        position: 'absolute',
+        top: '20%',
+        left: 'calc(50% - 100px)',
+        width: '200px',
+        height: '200px',
+        border: '4px solid white',
+        borderRadius: '50%'
+      }
+
+      // Aply style in element 
+      function applyStyle(element, styles) {
+        for (const property in style) {
+          element.style[property] = style[property];
+        }
+      }
+
+      applyStyle(ball, style);
+
+      document.body.insertAdjacentElement('afterbegin', ball);
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>
