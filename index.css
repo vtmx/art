@@ -129,7 +129,7 @@ nav {
 
     &:hover, &:active {
       cursor: pointer;
-      background: #111;
+      background: rgba(255 255 255 / .1);
     }
     
     .icon {
