@@ -120,7 +120,7 @@ nav {
     place-content: center;
     place-items: center;
     flex-grow: 1;
-    height: 96px;
+    height: 80px;
     background: transparent;
     border: 4px solid var(--fg);
     border-radius: var(--border-radius);
