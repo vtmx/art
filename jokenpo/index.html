@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoKenPô</title>
+  <script defer>
+    function duel(value) {
+      const playerHand = value;
+      const cpuHand = getRandomHand();
+      const options = { 0: 'Pedra', 1: 'Papel', 2: 'Tesoura' };
+      let result = '';
+      let round = +document.querySelector('#round').textContent;
+
+
+      if (playerHand === cpuHand) {
+        result = 'draw';
+      } else if (playerHand === 0 && cpuHand === 1) {
+        result = 'won';
+      } else if (playerHand === 0 && cpuHand === 2) {
+        result = 'win';
+      } else if (playerHand === 1 && cpuHand === 0) {
+        result = 'won';
+      } else if (playerHand === 1 && cpuHand === 2) {
+        result = 'win';
+      } else if (playerHand === 2 && cpuHand === 0) {
+        result = 'won';
+      } else if (playerHand === 2 && cpuHand === 1) {
+        result = 'win';
+      }
+
+      renderResult(result);
+      addRound(++round);
+
+      console.log(` Rodada: ${round} - ${result}
+Jogador: ${options[playerHand]}
+    CPU: ${options[cpuHand]}`);
+
+    }
+
+    function getRandomHand() {
+      return Math.round((Math.random() * 2));
+    }
+
+    function renderResult(result) {
+      let playerResult = +document.querySelector('#player-result').textContent;
+      let cpuResult = +document.querySelector('#cpu-result').textContent;
+
+      switch (result) {
+        case 'draw':
+          printCurrentResult('Empatou');
+          break;
+
+        case 'win':
+          printCurrentResult('Venceu');
+          document.querySelector('#player-result').textContent = ++playerResult;
+          break;
+
+        case 'won':
+          printCurrentResult('Perdeu');
+          document.querySelector('#cpu-result').textContent = ++cpuResult;
+          break;
+      }
+    }
+
+    function printCurrentResult(result) {
+      document.querySelector('#current-result').textContent = result;
+    }
+
+    function addRound(value) {
+      document.querySelector('#round').textContent = value;
+    }
+  </script>
+</head>
+<body>
+  <div id="history-result">Player: <span id="player-result">0</span> x CPU: <span id="cpu-result">0</span></div>
+  <div>Rodada: <span id="round">0</span></div>
+  <div id="current-result">Resultado</div>
+  <button id="rock" onclick="duel(0)">Pedra</button>
+  <button id="paper" onclick="duel(1)">Papel</button>
+  <button id="scisor" onclick="duel(2)">Tesoura</button>
+</body>
+</html>
